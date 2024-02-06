@@ -1,11 +1,13 @@
 package com.example.androidtest
 
+import android.R.attr.name
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
     var brojac = 0
@@ -36,6 +38,12 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
+
+        val sh = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val s1 = sh.getString("brojac", "")
+        val firstName = findViewById<TextView>(R.id.textViewCounter)
+        firstName.text = s1
+
         Log.i("MyLog", "onResume")
         Log.v("MyLog", "onResume"); // Verbose
         Log.d("MyLog", "onResume"); // Debug
@@ -55,7 +63,20 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onPause() {
         super.onPause()
-        Toast.makeText(applicationContext, "onPause", Toast.LENGTH_SHORT).show()
+
+        // Ensure 'brojac' is valid and retrieve its value
+        val brojacValue = findViewById<TextView>(R.id.textViewCounter)?.text?.toString() ?: ""
+
+        // Create or obtain a SharedPreferences instance
+        val sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        // Save the brojac value using a clear key
+        editor.putString("brojac", brojacValue)
+        editor.apply() // Apply changes asynchronously
+
+
+
         Log.i("MyLog", "onPause")
         Log.v("MyLog", "onPause"); // Verbose
         Log.d("MyLog", "onPause"); // Debug
@@ -95,15 +116,5 @@ class MainActivity : AppCompatActivity() {
             val firstName = findViewById<TextView>(R.id.textViewCounter)
             firstName.text = "$brojac"
         }
-    }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        // Save the user's current game state
-        outState.putInt("$brojac", brojac)
-    }
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        // Restore state from the savedInstanceState
-        brojac = savedInstanceState.getInt("$brojac")
     }
 }
