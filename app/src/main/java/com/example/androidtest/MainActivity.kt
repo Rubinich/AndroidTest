@@ -1,5 +1,5 @@
 package com.example.androidtest
-
+import android.content.SharedPreferences
 import android.R.attr.name
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     var brojac = 0
+    private lateinit var sharedPreferences: SharedPreferences
+    companion object {
+        const val SCORE_KEY = "score_key"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,10 +26,18 @@ class MainActivity : AppCompatActivity() {
         Log.i("MyLog", "onCreate"); // Info
         Log.w("MyLog", "onCreate"); // Warning
         Log.e("MyLog", "onCreate"); // Error
+        sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
 
+        // Restore brojac value from SharedPreferences
+        brojac = sharedPreferences.getInt(SCORE_KEY, 0)
+
+        // Update TextView
+        val textView = findViewById<TextView>(R.id.textViewCounter)
+        textView.text = "$brojac"
 
 
     }
+
     override fun onStart() {
         super.onStart()
         Toast.makeText(applicationContext, "onStart", Toast.LENGTH_SHORT).show()
@@ -39,10 +52,6 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
 
-        val sh = getSharedPreferences("MySharedPref", MODE_PRIVATE)
-        val s1 = sh.getString("brojac", "")
-        val firstName = findViewById<TextView>(R.id.textViewCounter)
-        firstName.text = s1
 
         Log.i("MyLog", "onResume")
         Log.v("MyLog", "onResume"); // Verbose
@@ -63,17 +72,13 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onPause() {
         super.onPause()
-
-        // Ensure 'brojac' is valid and retrieve its value
-        val brojacValue = findViewById<TextView>(R.id.textViewCounter)?.text?.toString() ?: ""
-
-        // Create or obtain a SharedPreferences instance
-        val sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        // Save updated brojac value to SharedPreferences
+        val textView = findViewById<TextView>(R.id.textViewCounter)
+        val brojacValue = textView.text.toString().toIntOrNull() ?: 0
         val editor = sharedPreferences.edit()
+        editor.putInt(SCORE_KEY, brojacValue)
+        editor.apply()
 
-        // Save the brojac value using a clear key
-        editor.putString("brojac", brojacValue)
-        editor.apply() // Apply changes asynchronously
 
 
 
