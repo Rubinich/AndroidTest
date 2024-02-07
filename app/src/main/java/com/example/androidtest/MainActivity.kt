@@ -1,6 +1,7 @@
 package com.example.androidtest
 import android.content.SharedPreferences
 import android.R.attr.name
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -112,6 +113,12 @@ class MainActivity : AppCompatActivity() {
 
     fun setOnClickListenerUp(view: View) {
         brojac++
+        if(brojac == 10){
+            brojac = 0
+            val intent = Intent(this, SuccessActivity::class.java).apply{ putExtra ("name", findViewById<TextView>(R.id.plainTextName).text.toString())
+            }
+            startActivity(intent)
+        }
         val firstName = findViewById<TextView>(R.id.textViewCounter)
         firstName.text= "$brojac"
     }
