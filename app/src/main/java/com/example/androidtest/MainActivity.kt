@@ -21,12 +21,11 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Toast.makeText(applicationContext, "onCreate", Toast.LENGTH_SHORT).show()
-        Log.i("MyLog", "onCreate")
-        Log.v("MyLog", "onCreate"); // Verbose
-        Log.d("MyLog", "onCreate"); // Debug
-        Log.i("MyLog", "onCreate"); // Info
-        Log.w("MyLog", "onCreate"); // Warning
-        Log.e("MyLog", "onCreate"); // Error
+        Log.v("MyLog", "onCreate");
+        Log.d("MyLog", "onCreate");
+        Log.i("MyLog", "onCreate");
+        Log.w("MyLog", "onCreate");
+        Log.e("MyLog", "onCreate");
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
 
         // Restore brojac value from SharedPreferences
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Toast.makeText(applicationContext, "onStart", Toast.LENGTH_SHORT).show()
-        Log.i("MyLog", "onStart")
         Log.v("MyLog", "onStart"); // Verbose
         Log.d("MyLog", "onStart"); // Debug
         Log.i("MyLog", "onStart"); // Info
@@ -54,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
 
 
-        Log.i("MyLog", "onResume")
         Log.v("MyLog", "onResume"); // Verbose
         Log.d("MyLog", "onResume"); // Debug
         Log.i("MyLog", "onResume"); // Info
@@ -64,7 +61,6 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         Toast.makeText(applicationContext, "onRestart", Toast.LENGTH_SHORT).show()
-        Log.i("MyLog", "onRestart")
         Log.v("MyLog", "onRestart"); // Verbose
         Log.d("MyLog", "onRestart"); // Debug
         Log.i("MyLog", "onRestart"); // Info
@@ -83,7 +79,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        Log.i("MyLog", "onPause")
         Log.v("MyLog", "onPause"); // Verbose
         Log.d("MyLog", "onPause"); // Debug
         Log.i("MyLog", "onPause"); // Info
@@ -93,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
-        Log.i("MyLog", "onStop")
+
         Log.v("MyLog", "onStop"); // Verbose
         Log.d("MyLog", "onStop"); // Debug
         Log.i("MyLog", "onStop"); // Info
@@ -103,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Toast.makeText(applicationContext, "onDestroy", Toast.LENGTH_SHORT).show()
-        Log.i("MyLog", "onDestroy")
+
         Log.v("MyLog", "onDestroy"); // Verbose
         Log.d("MyLog", "onDestroy"); // Debug
         Log.i("MyLog", "onDestroy"); // Info
