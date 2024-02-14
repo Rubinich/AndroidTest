@@ -28,10 +28,7 @@ class MainActivity : AppCompatActivity() {
         Log.e("MyLog", "onCreate");
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
 
-        // Restore brojac value from SharedPreferences
         brojac = sharedPreferences.getInt(SCORE_KEY, 0)
-
-        // Update TextView
         val textView = findViewById<TextView>(R.id.textViewCounter)
         textView.text = "$brojac"
 

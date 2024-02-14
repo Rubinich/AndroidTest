@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 
 class SuccessActivity : AppCompatActivity() {
     lateinit var name : String
@@ -22,10 +23,26 @@ class SuccessActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     fun sendButton(view: View) {
-        val uri: Uri = Uri.parse("smsto:0916218745")
-        val intent = Intent(Intent.ACTION_SENDTO, uri)
-        intent.putExtra("sms_body", textView.text)
-        startActivity(intent)
+        val phoneNumber = "0916218745"
+        val message = textView.text.toString()
+
+        val uri = Uri.parse("smsto:$phoneNumber")
+        val smsIntent = Intent(Intent.ACTION_SENDTO, uri)
+        smsIntent.putExtra("sms_body", message)
+
+        val chooser: Intent = Intent.createChooser(smsIntent, "Share")
+
+        if (smsIntent.resolveActivity(packageManager) != null) {
+            startActivity(chooser)
+        } else {
+            Toast.makeText(this, "No SMS app found", Toast.LENGTH_SHORT).show()
+        }
     }
+
+
+
+
+
 }

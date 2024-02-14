@@ -9,35 +9,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0" />
+            android:text="@string/_0"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setOnClickListenerUp"
-            android:text="UP" />
+            android:text="@string/up" />
 
         <Button
             android:id="@+id/buttonDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setOnClickListenerDown"
-            android:text="DOWN" />
+            android:text="@string/down" />
 
         <EditText
             android:id="@+id/plainTextName"
-            android:layout_width="98dp"
+            android:layout_width="124dp"
             android:layout_height="wrap_content"
+            android:autoSizeTextType="none"
+            android:autofillHints=""
             android:ems="10"
-            android:hint="Name:"
+            android:gravity="center"
+            android:hint="@string/name1"
             android:inputType="text" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
