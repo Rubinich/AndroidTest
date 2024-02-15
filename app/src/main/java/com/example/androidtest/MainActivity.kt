@@ -4,6 +4,7 @@ import android.R.attr.name
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -31,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         brojac = sharedPreferences.getInt(SCORE_KEY, 0)
         val textView = findViewById<TextView>(R.id.textViewCounter)
         textView.text = "$brojac"
-
-
     }
 
     override fun onStart() {
@@ -121,4 +120,11 @@ class MainActivity : AppCompatActivity() {
             firstName.text = "$brojac"
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+
 }

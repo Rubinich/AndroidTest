@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/running_abstract"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -16,7 +17,9 @@
             android:id="@+id/textViewCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="?colorSecondary"
             android:text="@string/_0"
+            android:textColor="?colorOnSecondary"
             android:textSize="20sp" />
 
         <Button
@@ -39,9 +42,11 @@
             android:layout_height="wrap_content"
             android:autoSizeTextType="none"
             android:autofillHints=""
+            android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/name1"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="?colorOnSecondary" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
