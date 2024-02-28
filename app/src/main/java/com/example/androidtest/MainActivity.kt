@@ -1,10 +1,11 @@
 package com.example.androidtest
-import android.content.SharedPreferences
-import android.R.attr.name
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextMenu
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -32,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         brojac = sharedPreferences.getInt(SCORE_KEY, 0)
         val textView = findViewById<TextView>(R.id.textViewCounter)
         textView.text = "$brojac"
+        setSupportActionBar(findViewById(R.id.my_toolbar))
+
+        registerForContextMenu(textView)
     }
 
     override fun onStart() {
@@ -121,9 +125,44 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.restore_counter -> {
+                brojac = 0
+                val steps = findViewById<TextView>(R.id.textViewCounter)
+                steps.text = "$brojac"
+                true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menuInflater.inflate(R.menu.menu_float, menu)
+    }
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.couterReset -> {
+                resetCounter(item)
+                true // Return true to consume the event and prevent further handling
+            }
+
+            else -> super.onContextItemSelected(item) // Handle other menu items
+        }
+    }
+
+
+    fun resetCounter(item: MenuItem) {
+        brojac = 0
+        val textViewCounter = findViewById<TextView>(R.id.textViewCounter)
+        textViewCounter.text = "$brojac"
     }
 
 
