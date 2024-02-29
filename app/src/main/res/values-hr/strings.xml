@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="down">GORE</string>
+    <string name="up">DOLJE</string>
+    <string name="name">Ime</string>
+    <string name="send">Pošalji</string>
+    <string name="reset">Resetiraj</string>
+    <string name="croatian">Hrvatski</string>
+    <string name="english">Engleski</string>
+    <string name="reset_counter">Resetiraj brojač</string>
+    <string name="successfully_made_10_steps">uspješno je napravio 10 koraka</string>
+    <string name="no_sms_app_found">nije nađena SMS aplikacija</string>
+</resources>

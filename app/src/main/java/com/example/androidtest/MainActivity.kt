@@ -1,6 +1,8 @@
 package com.example.androidtest
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.ContextMenu
@@ -10,6 +12,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -69,15 +72,11 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onPause() {
         super.onPause()
-        // Save updated brojac value to SharedPreferences
         val textView = findViewById<TextView>(R.id.textViewCounter)
         val brojacValue = textView.text.toString().toIntOrNull() ?: 0
         val editor = sharedPreferences.edit()
         editor.putInt(SCORE_KEY, brojacValue)
         editor.apply()
-
-
-
 
         Log.v("MyLog", "onPause"); // Verbose
         Log.d("MyLog", "onPause"); // Debug
@@ -137,12 +136,32 @@ class MainActivity : AppCompatActivity() {
                 brojac = 0
                 val steps = findViewById<TextView>(R.id.textViewCounter)
                 steps.text = "$brojac"
-                true
+                return true
+            }
+            R.id.croatian -> {
+                changeLanguage(this, "hr")
+                recreate()
+                return true
+            }
+            R.id.english -> {
+                changeLanguage(this, "en-us")
+                recreate()
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    @Suppress("DEPRECATION")
+    private fun changeLanguage(context: Context, language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val res = context.resources
+        val config = Configuration(res.configuration)
+        config.setLocale(locale)
+        context.createConfigurationContext(config)
+        res.updateConfiguration(config, res.displayMetrics)
+    }
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         menuInflater.inflate(R.menu.menu_float, menu)
@@ -151,14 +170,11 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.couterReset -> {
                 resetCounter(item)
-                true // Return true to consume the event and prevent further handling
+                return true
             }
-
-            else -> super.onContextItemSelected(item) // Handle other menu items
+            else -> super.onContextItemSelected(item)
         }
     }
-
-
     fun resetCounter(item: MenuItem) {
         brojac = 0
         val textViewCounter = findViewById<TextView>(R.id.textViewCounter)

@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
     android:id="@+id/restore_counter"
-    android:title="@string/resetiraj"
+    android:title="@string/reset"
     android:icon="@drawable/baseline_restore_24"
     app:showAsAction="ifRoom"/>
     <item
     android:id="@+id/croatian"
-    android:title="@string/hrvatski" />
+    android:title="@string/croatian" />
     <item
     android:id="@+id/english"
-    android:title="@string/engleski" />
+    android:title="@string/english" />
     </menu>

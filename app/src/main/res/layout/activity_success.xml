@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-
         android:orientation="vertical">
 
         <TextView
@@ -21,6 +20,29 @@
             android:background="@android:color/transparent"
             android:text="@string/textview"
             android:textColor="@color/black" />
+        <RadioGroup
+            android:id="@+id/radioGroupPhoneNumbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioButtonPhoneNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0916218745"
+                 />
+            <RadioButton
+                android:id="@+id/radioButtonPhoneNumber2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0916333742" />
+            <RadioButton
+                android:id="@+id/radioButtonPhoneNumber3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0937733789" />
+        </RadioGroup>
 
         <Button
             android:id="@+id/send"

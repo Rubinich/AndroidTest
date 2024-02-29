@@ -57,7 +57,7 @@
             android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="center"
-            android:hint="@string/name1"
+            android:hint="@string/name"
             android:inputType="text"
             android:textColor="?colorOnSecondary" />
     </LinearLayout>

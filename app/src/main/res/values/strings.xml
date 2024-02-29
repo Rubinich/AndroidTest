@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">Fit Runner</string>
-    <string name="name">Name:</string>
+    <string name="app_name" translatable="false">Fit Runner</string>
     <string name="down">DOWN</string>
     <string name="up">UP</string>
-    <string name="_0">0</string>
-    <string name="name1">Name</string>
-    <string name="textview">TextView</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="name">Name</string>
+    <string name="textview" translatable="false">TextView</string>
     <string name="send">Send</string>
-    <string name="resetiraj">Resetiraj</string>
-    <string name="hrvatski">Hrvatski</string>
-    <string name="engleski">Engleski</string>
-    <string name="reset_counter">reset counter</string>
+    <string name="reset">Reset</string>
+    <string name="croatian">Croatian</string>
+    <string name="english">English</string>
+    <string name="reset_counter">Reset counter</string>
+    <string name="successfully_made_10_steps">successfully made 10 steps</string>
+    <string name="no_sms_app_found">no SMS app found</string>
 </resources>
