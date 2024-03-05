@@ -14,18 +14,13 @@ import android.widget.Toast
 class SuccessActivity : AppCompatActivity() {
     lateinit var name : String
     private lateinit var textView : TextView
-    private lateinit var smallText : TextView
     @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_success)
-        setContentView(R.layout.longer_text)
-
         textView = findViewById<View>(R.id.nameText) as TextView
-
         name = intent.getStringExtra("name").toString()
-        smallText = intent.getStringExtra("success").toString()
-        textView.text = name + smallText
+        textView.text = name + " " + textView.text
     }
 
     @SuppressLint("QueryPermissionsNeeded")
@@ -39,12 +34,11 @@ class SuccessActivity : AppCompatActivity() {
         val smsIntent = Intent(Intent.ACTION_SENDTO, uri)
         smsIntent.putExtra("sms_body", message)
 
-        val chooser: Intent = Intent.createChooser(smsIntent, "Share")
-        val smstext = findViewById<View>(R.id.no_sms) as TextView
+        val chooser: Intent = Intent.createChooser(smsIntent, "")
         if (smsIntent.resolveActivity(packageManager) != null) {
             startActivity(chooser)
         } else {
-            Toast.makeText(this, "$smstext", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No SMS app found", Toast.LENGTH_SHORT).show()
         }
     }
 

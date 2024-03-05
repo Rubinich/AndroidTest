@@ -8,6 +8,6 @@
     <string name="croatian">Hrvatski</string>
     <string name="english">Engleski</string>
     <string name="reset_counter">Resetiraj brojač</string>
-    <string name="successfully_made_10_steps">uspješno je napravio 10 koraka</string>
     <string name="no_sms_app_found">nije nađena SMS aplikacija</string>
+    <string name="successfully_made_10_steps">je uspješno napravio/la 10 koraka</string>
 </resources>
