@@ -17,9 +17,10 @@
             android:id="@+id/nameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="@color/white"
             android:text="@string/successfully_made_10_steps"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
         <RadioGroup
             android:id="@+id/radioGroupPhoneNumbers"
             android:layout_width="wrap_content"
@@ -30,25 +31,33 @@
                 android:id="@+id/radioButtonPhoneNumber1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:text="0916218745"
-                 />
+                android:textSize="16sp" />
+
             <RadioButton
                 android:id="@+id/radioButtonPhoneNumber2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0916333742" />
+                android:background="@color/white"
+                android:text="0916333742"
+                android:textSize="16sp" />
+
             <RadioButton
                 android:id="@+id/radioButtonPhoneNumber3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0937733789" />
+                android:background="@color/white"
+                android:text="0937733789"
+                android:textSize="16sp" />
         </RadioGroup>
 
         <Button
             android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="sendButton"
             android:text="@string/send"
-            android:onClick="sendButton"/>
+            android:textSize="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

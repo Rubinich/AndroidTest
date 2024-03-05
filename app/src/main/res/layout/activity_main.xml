@@ -25,6 +25,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="250sp" />
+
         <TextView
             android:id="@+id/textViewCounter"
             android:layout_width="wrap_content"
@@ -32,21 +33,23 @@
             android:background="?colorSecondary"
             android:text="@string/_0"
             android:textColor="?colorOnSecondary"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/buttonUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setOnClickListenerUp"
-            android:text="@string/up" />
+            android:text="@string/up"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/buttonDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setOnClickListenerDown"
-            android:text="@string/down" />
+            android:text="@string/down"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/plainTextName"
@@ -54,11 +57,12 @@
             android:layout_height="wrap_content"
             android:autoSizeTextType="none"
             android:autofillHints=""
-            android:background="@android:color/transparent"
+            android:background="@color/white"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/name"
             android:inputType="text"
-            android:textColor="?colorOnSecondary" />
+            android:textColor="?colorOnSecondary"
+            android:textSize="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
