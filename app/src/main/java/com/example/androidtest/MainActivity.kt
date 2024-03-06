@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.ContextMenu
 import android.view.Menu
@@ -12,12 +13,17 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.androidtest.data.User
+import com.example.androidtest.data.UserViewModel
+import java.time.LocalTime
 import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
     var brojac = 0
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var mUserViewModel: UserViewModel
     companion object {
         const val SCORE_KEY = "score_key"
     }
@@ -106,6 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setOnClickListenerUp(view: View) {
+        insertDataToDatabase()
         brojac++
         if(brojac == 10){
             brojac = 0
@@ -138,6 +145,10 @@ class MainActivity : AppCompatActivity() {
                 steps.text = "$brojac"
                 return true
             }
+            R.id.analytics ->{
+                val intent = Intent(this, AnalyticsActivity::class.java)
+                startActivity(intent)
+            }
             R.id.croatian -> {
                 changeLanguage(this, "hr")
                 recreate()
@@ -150,6 +161,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun insertDataToDatabase() {
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        val name = findViewById<TextView>(R.id.plainTextName).text.toString()
+        val time = LocalTime.now()
+        val timeString = time.toString() // this stores the value of time
+        if(TextUtils.isEmpty(name)){
+            Log.e("Database", "User didn't enter it's name")
+            brojac --
+            Toast.makeText(applicationContext, "Alojz", Toast.LENGTH_SHORT).show()
+        }else{
+            val user = User(0, name, timeString, brojac)
+            mUserViewModel.addUser(user)
+        }
     }
 
     @Suppress("DEPRECATION")

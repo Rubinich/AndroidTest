@@ -12,4 +12,5 @@
     <string name="reset_counter">Reset counter</string>
     <string name="no_sms_app_found">no SMS app found</string>
     <string name="successfully_made_10_steps">successfully made 10 steps</string>
+    <string name="analytics" />
 </resources>

@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/analytics"
+        android:title="@string/analytics"
+        android:icon="@drawable/baseline_data_exploration_24"
+        app:showAsAction="ifRoom"/>
+    <item
     android:id="@+id/restore_counter"
     android:title="@string/reset"
     android:icon="@drawable/baseline_restore_24"
