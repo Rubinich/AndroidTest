@@ -114,8 +114,7 @@ class MainActivity : AppCompatActivity() {
     fun setOnClickListenerUp(view: View) {
         insertDataToDatabase()
         brojac++
-        if(brojac == 10){
-            brojac = 0
+        if(brojac%10 == 0){
             val intent = Intent(this, SuccessActivity::class.java).apply{ putExtra ("name", findViewById<TextView>(R.id.plainTextName).text.toString())
             }
             startActivity(intent)
