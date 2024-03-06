@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Toast.makeText(applicationContext, "onCreate", Toast.LENGTH_SHORT).show()
-        Log.v("MyLog", "onCreate");
+        /*Log.v("MyLog", "onCreate");
         Log.d("MyLog", "onCreate");
         Log.i("MyLog", "onCreate");
         Log.w("MyLog", "onCreate");
-        Log.e("MyLog", "onCreate");
+        Log.e("MyLog", "onCreate");*/
         sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE)
 
         brojac = sharedPreferences.getInt(SCORE_KEY, 0)
@@ -50,31 +50,31 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Toast.makeText(applicationContext, "onStart", Toast.LENGTH_SHORT).show()
-        Log.v("MyLog", "onStart"); // Verbose
-        Log.d("MyLog", "onStart"); // Debug
-        Log.i("MyLog", "onStart"); // Info
-        Log.w("MyLog", "onStart"); // Warning
-        Log.e("MyLog", "onStart"); // Error
+        /*Log.v("MyLog", "onStart");
+        Log.d("MyLog", "onStart");
+        Log.i("MyLog", "onStart");
+        Log.w("MyLog", "onStart");
+        Log.e("MyLog", "onStart"); */
     }
     override fun onResume() {
         super.onResume()
         Toast.makeText(applicationContext, "onResume", Toast.LENGTH_SHORT).show()
 
 
-        Log.v("MyLog", "onResume"); // Verbose
-        Log.d("MyLog", "onResume"); // Debug
-        Log.i("MyLog", "onResume"); // Info
-        Log.w("MyLog", "onResume"); // Warning
-        Log.e("MyLog", "onResume"); // Error
+        /*Log.v("MyLog", "onResume");
+        Log.d("MyLog", "onResume");
+        Log.i("MyLog", "onResume");
+        Log.w("MyLog", "onResume");
+        Log.e("MyLog", "onResume");*/
     }
     override fun onRestart() {
         super.onRestart()
         Toast.makeText(applicationContext, "onRestart", Toast.LENGTH_SHORT).show()
-        Log.v("MyLog", "onRestart"); // Verbose
-        Log.d("MyLog", "onRestart"); // Debug
-        Log.i("MyLog", "onRestart"); // Info
-        Log.w("MyLog", "onRestart"); // Warning
-        Log.e("MyLog", "onRestart"); // Error
+        /*Log.v("MyLog", "onRestart");
+        Log.d("MyLog", "onRestart");
+        Log.i("MyLog", "onRestart");
+        Log.w("MyLog", "onRestart");
+        Log.e("MyLog", "onRestart");*/
     }
     override fun onPause() {
         super.onPause()
@@ -84,31 +84,31 @@ class MainActivity : AppCompatActivity() {
         editor.putInt(SCORE_KEY, brojacValue)
         editor.apply()
 
-        Log.v("MyLog", "onPause"); // Verbose
-        Log.d("MyLog", "onPause"); // Debug
-        Log.i("MyLog", "onPause"); // Info
-        Log.w("MyLog", "onPause"); // Warning
-        Log.e("MyLog", "onPause"); // Error
+        /*Log.v("MyLog", "onPause");
+        Log.d("MyLog", "onPause");
+        Log.i("MyLog", "onPause");
+        Log.w("MyLog", "onPause");
+        Log.e("MyLog", "onPause");*/
     }
     override fun onStop() {
         super.onStop()
         Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
 
-        Log.v("MyLog", "onStop"); // Verbose
-        Log.d("MyLog", "onStop"); // Debug
-        Log.i("MyLog", "onStop"); // Info
-        Log.w("MyLog", "onStop"); // Warning
-        Log.e("MyLog", "onStop"); // Error
+        /*Log.v("MyLog", "onStop");
+        Log.d("MyLog", "onStop");
+        Log.i("MyLog", "onStop");
+        Log.w("MyLog", "onStop");
+        Log.e("MyLog", "onStop");*/
     }
     override fun onDestroy() {
         super.onDestroy()
         Toast.makeText(applicationContext, "onDestroy", Toast.LENGTH_SHORT).show()
 
-        Log.v("MyLog", "onDestroy"); // Verbose
-        Log.d("MyLog", "onDestroy"); // Debug
-        Log.i("MyLog", "onDestroy"); // Info
-        Log.w("MyLog", "onDestroy"); // Warning
-        Log.e("MyLog", "onDestroy"); // Error
+       /* Log.v("MyLog", "onDestroy");
+        Log.d("MyLog", "onDestroy");
+        Log.i("MyLog", "onDestroy");
+        Log.w("MyLog", "onDestroy");
+        Log.e("MyLog", "onDestroy");*/
     }
 
     fun setOnClickListenerUp(view: View) {
